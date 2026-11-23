@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Not now</title>
+  <link rel="icon" href="icons/48.png">
+  <style>
+    :root { --bg: #f3efe6; --ink: #1b1a17; --muted: #7a756b; --line: #d9d3c5; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #151412; --ink: #ece7dc; --muted: #8d877b; --line: #2c2a26; }
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      display: grid; place-items: center; padding: 32px;
+    }
+    main { width: min(640px, 100%); }
+    .clock {
+      font: 500 14px/1 ui-monospace, "SF Mono", Menlo, monospace;
+      letter-spacing: .08em; color: var(--muted); margin-bottom: 40px;
+    }
+    h1 {
+      font: 400 clamp(64px, 12vw, 120px)/.95 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      letter-spacing: -.02em; margin-bottom: 28px;
+    }
+    .site { font-size: 20px; margin-bottom: 8px; }
+    .site b { font-weight: 600; }
+    .count { color: var(--muted); }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0 20px; }
+    .foot { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 14px; }
+    a { color: inherit; }
+    #grace {
+      margin-top: 28px; padding: 10px 18px; border: 1px solid var(--ink); border-radius: 6px;
+      background: transparent; color: var(--ink); font: inherit; font-size: 15px; cursor: pointer;
+    }
+    #grace:hover { background: var(--ink); color: var(--bg); }
+    #grace:disabled { opacity: .5; cursor: default; }
+    #grace[hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="clock" id="clock"></div>
+    <h1 id="title">Not now.</h1>
+    <p class="site" id="site">That site is on your block list.</p>
+    <p class="count" id="count"></p>
+    <button id="grace" hidden>Give me 1 minute</button>
+    <hr>
+    <div class="foot">
+      <span>Close this tab and get back to work.</span>
+      <a href="options.html" target="_blank">Settings</a>
+    </div>
+  </main>
+  <script type="module" src="blocked.js"></script>
+</body>
+</html>
